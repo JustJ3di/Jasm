@@ -3,10 +3,11 @@ section .text
 	global _start
 
 _start:
-	mov rax, 1
+
+	mov rax, 2
 	cmp rax, 1
-	jne bad
-	jmp good
+	je good
+	jmp bad
 	;;sys_write()
 good:	
 	mov rax, WRITE
@@ -23,6 +24,7 @@ bad:
 	mov rdx, len_bad
 	syscall
 	jmp exit
+
 	;;sys_exit()
 exit:
 	mov rax, EXIT
